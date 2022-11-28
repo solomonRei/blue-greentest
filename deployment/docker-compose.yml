@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  green-backend:
+    image: python:3
+    volumes:
+      - ./hello-green.py:/usr/local/src/hello.py
+    command: python /usr/local/src/hello.py
+    container_name: green-backend
+  blue-backend:
+    image: python:3
+    volumes:
+      - ./hello-blue.py:/usr/local/src/hello.py
+    command: python /usr/local/src/hello.py
+    container_name: blue-backend
+networks:
+  default:
+    name: nginx-network
+    external: true
